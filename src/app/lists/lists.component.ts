@@ -8,13 +8,25 @@ import { DataService } from '../data.service';
   providers: [DataService]
 })
 export class ListsComponent implements OnInit {
-  bikes = [];
-  constructor(private dataServie: DataService) { }
+  bikes;
+  temp;
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
-    this.dataServie.fetchData().subscribe(
-      (data) => this.bikes = data.bikes
-    );
   }
 
+  convert(temp) {
+    var output = parseInt(temp) - 273.15;
+    return Math.round(output);
+  }
+
+  submit(city: string) {
+    this.dataService.fetchData(city).subscribe(
+        (data) => {
+          this.bikes = data[0].bikes;
+          this.temp = this.convert(data[1].main.temp);
+          console.log(data[1]);
+        }
+      );
+  }
 }

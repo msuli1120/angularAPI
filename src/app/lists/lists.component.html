@@ -1,5 +1,11 @@
 <h2>Bikes</h2>
 
+<label>Enter the name of your city</label>
+<input #city>
+<button  (click)="submit(city.value); city.value=''">Submit</button>
+
+<p>It's {{temp}} degrees</p>
+
 <div *ngFor="let bike of bikes">
   <div class="panel panel-info">
     <div class="panel-heading">
