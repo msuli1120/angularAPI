@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 import { routing } from './app.routing';
 import { AppComponent } from './app.component';
 import { ListsComponent } from './lists/lists.component';
+import { Apikeys } from './apiKeys';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { ListsComponent } from './lists/lists.component';
     HttpModule,
     routing
   ],
-  providers: [],
+  providers: [Apikeys],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
